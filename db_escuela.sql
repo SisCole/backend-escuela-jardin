@@ -45,24 +45,16 @@ CREATE TABLE `docentes` (
   CONSTRAINT `fk_docentes_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
-CREATE TABLE `niveles` (
-  `id_nivel` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) NOT NULL,
-  `edad_requerida` int(11) NOT NULL,
-  PRIMARY KEY (`id_nivel`)
-) ENGINE=InnoDB;
-
 CREATE TABLE `aulas` (
   `id_aula` int(11) NOT NULL AUTO_INCREMENT,
-  `id_nivel` int(11) NOT NULL,
   `id_docente_tutor` int(11) DEFAULT NULL,
   `nombre` varchar(50) NOT NULL,
   `capacidad` int(11) NOT NULL,
+  `nivel_nombre` varchar(50) NOT NULL,
+  `edad_requerida` int(11) NOT NULL,
   PRIMARY KEY (`id_aula`),
-  KEY `fk_aulas_nivel` (`id_nivel`),
   KEY `fk_aulas_docente` (`id_docente_tutor`),
-  CONSTRAINT `fk_aulas_docente` FOREIGN KEY (`id_docente_tutor`) REFERENCES `docentes` (`id_docente`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `fk_aulas_nivel` FOREIGN KEY (`id_nivel`) REFERENCES `niveles` (`id_nivel`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `fk_aulas_docente` FOREIGN KEY (`id_docente_tutor`) REFERENCES `docentes` (`id_docente`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 CREATE TABLE `alumnos` (

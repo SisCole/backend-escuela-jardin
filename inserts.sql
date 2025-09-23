@@ -1,34 +1,35 @@
 -- ===================================
--- INSERTS PARA BASE DE DATOS JARDÍN INFANTIL
+-- INSERTS PARA BASE DE DATOS JARDÍN INFANTIL - CORREGIDO
 -- ===================================
-USE `db_jardin`;
+USE db_jardin;
+
 -- 1. ROLES
-INSERT INTO `roles` (`nombre`, `descripcion`) VALUES
+INSERT INTO roles (nombre, descripcion) VALUES
 ('ADMINISTRADOR', 'Usuario con acceso completo al sistema'),
 ('DOCENTE', 'Profesor a cargo de aulas y evaluaciones'),
-('APODERADO', 'Padre, madre o tutor legal del alumno'),
+('APODERADO', 'Padre, madre o tutor legal del alumno');
 
 -- 2. USUARIOS (Contraseñas hasheadas para seguridad)
-INSERT INTO `usuarios` (`email`, `password_hash`, `id_rol`, `estado`) VALUES
+INSERT INTO usuarios (email, password_hash, id_rol, estado) VALUES
 -- Administradores y personal
-('admin@jardin.edu.pe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, 'activo'), -- password
-('director@jardin.edu.pe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, 'activo'), -- password
-('secretaria@jardin.edu.pe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, 'activo'), -- password
+('admin@jardin.edu.pe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, 'activo'), -- admin123
+('director@jardin.edu.pe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, 'activo'), -- director123
+('secretaria@jardin.edu.pe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, 'activo'), -- secret123
 -- Docentes
-('maria.garcia@jardin.edu.pe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'activo'), -- password
-('carlos.lopez@jardin.edu.pe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'activo'), -- password
-('ana.rodriguez@jardin.edu.pe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'activo'), --password
-('luis.martinez@jardin.edu.pe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'activo'), -- password
+('maria.garcia@jardin.edu.pe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'activo'), -- maria123
+('carlos.lopez@jardin.edu.pe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'activo'), -- carlos123
+('ana.rodriguez@jardin.edu.pe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'activo'), -- ana123
+('luis.martinez@jardin.edu.pe', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2, 'activo'), -- luis123
 -- Apoderados
-('padre1@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'activo'), -- password
-('madre1@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'activo'), -- password
-('apoderado2@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'activo'), -- password
-('tutor1@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'activo'), --password
-('familiar1@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'activo'), -- password
-('papa.gomez@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'activo'); -- password
+('padre1@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'activo'), -- padre123
+('madre1@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'activo'), -- madre123
+('apoderado2@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'activo'), -- apod123
+('tutor1@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'activo'), -- tutor123
+('familiar1@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'activo'), -- fam123
+('papa.gomez@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3, 'activo'); -- papa123
 
 -- 3. DOCENTES
-INSERT INTO `docentes` (`id_usuario`, `nombre`, `apellido`, `dni`, `email`, `direccion`, `telefono`, `fecha_nacimiento`, `fecha_ingreso`, `especialidad`) VALUES
+INSERT INTO docentes (id_usuario, nombre, apellido, dni, email, direccion, telefono, fecha_nacimiento, fecha_ingreso, especialidad) VALUES
 (4, 'María', 'García', '12345678', 'maria.garcia@jardin.edu.pe', 'Av. Principal 123', '987654321', '1985-03-15', '2020-03-01', 'Educación Inicial 3 años'),
 (5, 'Carlos', 'López', '87654321', 'carlos.lopez@jardin.edu.pe', 'Jr. Flores 456', '976543210', '1988-07-22', '2019-02-15', 'Educación Inicial 4 años'),
 (6, 'Ana', 'Rodríguez', '11223344', 'ana.rodriguez@jardin.edu.pe', 'Calle Luna 789', '965432109', '1990-11-08', '2021-01-10', 'Educación Inicial 5 años'),
@@ -37,7 +38,7 @@ INSERT INTO `docentes` (`id_usuario`, `nombre`, `apellido`, `dni`, `email`, `dir
 (NULL, 'Roberto', 'Torres', '88776655', 'roberto.torres@jardin.edu.pe', 'Calle Norte 987', '932109876', '1986-12-18', '2019-07-12', 'Educación Inicial');
 
 -- 4. AULAS (Múltiples aulas por edad con nombres específicos)
-INSERT INTO `aulas` (`id_docente_tutor`, `nombre`, `capacidad`, `nivel_nombre`, `edad_requerida`) VALUES
+INSERT INTO aulas (id_docente_tutor, nombre, capacidad, nivel_nombre, edad_requerida) VALUES
 -- Aulas para 3 años
 (1, 'Aula Rosa A', 15, 'Inicial 3 años', 3),
 (1, 'Aula Rosa B', 15, 'Inicial 3 años', 3),
@@ -51,7 +52,7 @@ INSERT INTO `aulas` (`id_docente_tutor`, `nombre`, `capacidad`, `nivel_nombre`, 
 (5, 'Aula Azul C', 20, 'Inicial 5 años', 5);
 
 -- 5. ALUMNOS
-INSERT INTO `alumnos` (`nombre`, `apellido`, `dni`, `fecha_nacimiento`, `genero`, `direccion`, `telefono_emergencia`, `informacion_medica`) VALUES
+INSERT INTO alumnos (nombre, apellido, dni, fecha_nacimiento, genero, direccion, telefono_emergencia, informacion_medica) VALUES
 -- Alumnos de 3 años (nacidos en 2022)
 ('Sebastián', 'Pérez', '10001001', '2022-04-15', 'M', 'Av. Los Álamos 123', '987123456', 'Sin alergias conocidas'),
 ('Valentina', 'Morales', '10001002', '2022-06-20', 'F', 'Jr. Las Flores 456', '987234567', 'Alergia a los mariscos'),
@@ -79,7 +80,7 @@ INSERT INTO `alumnos` (`nombre`, `apellido`, `dni`, `fecha_nacimiento`, `genero`
 ('Catalina', 'Jiménez', '30003008', '2020-09-28', 'F', 'Av. Moquegua 024', '965890123', 'Trastorno del espectro autista leve');
 
 -- 6. APODERADOS
-INSERT INTO `apoderados` (`id_usuario`, `nombre`, `apellido`, `dni`, `email`, `fecha_nacimiento`, `direccion`, `telefono`, `ocupacion`) VALUES
+INSERT INTO apoderados (id_usuario, nombre, apellido, dni, email, fecha_nacimiento, direccion, telefono, ocupacion) VALUES
 (8, 'Juan Carlos', 'Pérez', '40001001', 'padre1@email.com', '1985-08-12', 'Av. Los Álamos 123', '987123456', 'Ingeniero'),
 (9, 'María Elena', 'Morales', '40001002', 'madre1@email.com', '1988-03-25', 'Jr. Las Flores 456', '987234567', 'Doctora'),
 (10, 'Roberto', 'Vásquez', '40001003', 'apoderado2@email.com', '1982-11-07', 'Calle Primavera 789', '987345678', 'Contador'),
@@ -92,7 +93,7 @@ INSERT INTO `apoderados` (`id_usuario`, `nombre`, `apellido`, `dni`, `email`, `f
 (NULL, 'Sandra', 'Gutiérrez', '40001010', 'sandra.gutierrez@email.com', '1987-10-12', 'Calle Bolívar 852', '976567890', 'Enfermera');
 
 -- 7. RELACIONES ALUMNO-APODERADOS
-INSERT INTO `alumno_apoderados` (`id_alumno`, `id_apoderado`, `parentesco`) VALUES
+INSERT INTO alumno_apoderados (id_alumno, id_apoderado, parentesco) VALUES
 -- Sebastián Pérez
 (1, 1, 'Padre'),
 (1, 2, 'Madre'),
@@ -144,7 +145,7 @@ INSERT INTO `alumno_apoderados` (`id_alumno`, `id_apoderado`, `parentesco`) VALU
 (20, 10, 'Madre');
 
 -- 8. MATRÍCULAS
-INSERT INTO `matriculas` (`id_alumno`, `id_aula`, `fecha_matricula`, `estado`) VALUES
+INSERT INTO matriculas (id_alumno, id_aula, fecha_matricula, estado) VALUES
 -- Matrículas en Aulas Rosa (3 años)
 (1, 1, '2025-03-01', 'activa'), -- Sebastián en Aula Rosa A
 (2, 1, '2025-03-05', 'activa'), -- Valentina en Aula Rosa A
@@ -172,7 +173,7 @@ INSERT INTO `matriculas` (`id_alumno`, `id_aula`, `fecha_matricula`, `estado`) V
 (20, 7, '2025-03-10', 'activa'); -- Catalina en Aula Azul B
 
 -- 9. ÁREAS CURRICULARES
-INSERT INTO `areas_curriculares` (`nombre`) VALUES
+INSERT INTO areas_curriculares (nombre) VALUES
 ('Personal Social'),
 ('Comunicación'),
 ('Matemática'),
@@ -183,7 +184,7 @@ INSERT INTO `areas_curriculares` (`nombre`) VALUES
 ('Inglés');
 
 -- 10. CALIFICACIONES (Ejemplos de evaluaciones cualitativas)
-INSERT INTO `calificaciones` (`id_matricula`, `id_area`, `id_docente`, `valor_cualitativo`, `observacion_descriptiva`, `fecha_registro`) VALUES
+INSERT INTO calificaciones (id_matricula, id_area, id_docente, valor_cualitativo, observacion_descriptiva, fecha_registro) VALUES
 -- Calificaciones para algunos alumnos de 3 años
 (1, 1, 1, 'Logro Esperado', 'Sebastián muestra buena adaptación al entorno escolar y se relaciona bien con sus compañeros.', '2025-06-15 10:30:00'),
 (1, 2, 1, 'En Proceso', 'Está desarrollando su vocabulario y expresión oral gradualmente.', '2025-06-15 10:35:00'),
@@ -201,7 +202,7 @@ INSERT INTO `calificaciones` (`id_matricula`, `id_area`, `id_docente`, `valor_cu
 (14, 5, 3, 'Logro Esperado', 'Fernanda tiene buen desarrollo de su coordinación motora gruesa y fina.', '2025-06-25 09:00:00');
 
 -- 11. CONCEPTOS DE PAGO
-INSERT INTO `conceptos_pago` (`nombre`, `descripcion`, `monto_sugerido`) VALUES
+INSERT INTO conceptos_pago (nombre, descripcion, monto_sugerido) VALUES
 ('Matrícula', 'Pago único de matrícula anual', 150.00),
 ('Pensión Mensual', 'Mensualidad escolar', 250.00),
 ('Materiales Educativos', 'Kit de materiales y útiles escolares', 80.00),
@@ -210,7 +211,7 @@ INSERT INTO `conceptos_pago` (`nombre`, `descripcion`, `monto_sugerido`) VALUES
 ('Uniformes', 'Uniformes y accesorios escolares', 120.00);
 
 -- 12. PAGOS (Ejemplos de pagos realizados)
-INSERT INTO `pagos` (`id_matricula`, `id_concepto_pago`, `monto_pagado`, `fecha_pago`, `metodo_pago`, `numero_operacion`, `observaciones`, `id_usuario_registro`) VALUES
+INSERT INTO pagos (id_matricula, id_concepto_pago, monto_pagado, fecha_pago, metodo_pago, numero_operacion, observaciones, id_usuario_registro) VALUES
 -- Pagos de matrícula
 (1, 1, 150.00, '2025-02-28', 'Transferencia', 'TRF-001234', 'Pago completo de matrícula', 3),
 (2, 1, 150.00, '2025-03-01', 'Yape/Plin', 'YPE-567890', 'Pago vía Yape', 3),
@@ -231,7 +232,7 @@ INSERT INTO `pagos` (`id_matricula`, `id_concepto_pago`, `monto_pagado`, `fecha_
 (2, 4, 30.00, '2025-03-22', 'Transferencia', 'TRF-001237', 'Seguro de accidentes', 3);
 
 -- 13. COMUNICADOS
-INSERT INTO `comunicados` (`id_usuario_emisor`, `titulo`, `contenido`, `fecha_publicacion`, `destinatario_tipo`, `id_destinatario`) VALUES
+INSERT INTO comunicados (id_usuario_emisor, titulo, contenido, fecha_publicacion, destinatario_tipo, id_destinatario) VALUES
 -- Comunicados globales
 (2, 'Bienvenida Año Escolar 2025', 'Estimados padres de familia, les damos la más cordial bienvenida al año escolar 2025. Estamos muy emocionados de iniciar este nuevo período académico junto a sus pequeños...', '2025-02-15 08:00:00', 'GLOBAL', NULL),
 
