@@ -1,8 +1,13 @@
-// importaciones
-import  alumnoRouter from './routes/index.route';
-import  { Alumno } from './models/alumno.entity';
+import { Router } from 'express';
+import { getAlumnoById, getAlumnos, createAlumno, updateAlumno, deleteAlumno } from './alumno.controller';
+import { validateAlumnoBody, validateAlumnoParams } from './middlewares/alumno.middleware';
 
+const router = Router();
 
-// exportaciones
-export { alumnoRouter };
-export { Alumno };
+router.get('/:id', validateAlumnoParams, getAlumnoById);
+router.get('/', getAlumnos);
+router.post('/', validateAlumnoBody , createAlumno);
+router.put('/:id',validateAlumnoParams, validateAlumnoBody, updateAlumno);
+router.delete('/:id', validateAlumnoParams, deleteAlumno);
+
+export default router;

@@ -1,13 +1,13 @@
-import { PORT } from './config/config';
 import dotenv from 'dotenv';
+dotenv.config();
+
+import { PORT } from './config/config';
 import { connectDB } from './db/connection';
 import app from "./main";
 
 (async () => {
     try {
         
-        dotenv.config();
-
         await connectDB();
 
         app.listen(PORT, () => {

@@ -4,13 +4,14 @@ import { Apoderado } from '../models/apoderado.entity';
 
 //type general
 export interface ApoderadoRequest extends Request {
-    body: ApoderadoEntity;
+    body: Omit<ApoderadoEntity, 'idApoderado'>;
     params: {
         id: string;
     }
 }
 
 export interface ApoderadoEntity {
+    idApoderado?: number;
     nombre: string;
     apellido: string;
     dni: string;
@@ -20,6 +21,3 @@ export interface ApoderadoEntity {
     telefono?: string;
     ocupacion?: string;
 }
-
-export type ApoderadoAttributes = InferAttributes<Apoderado>;
-export type ApoderadoCreationAttributes = Omit<ApoderadoEntity, 'idApoderado'>;

@@ -1,4 +1,1 @@
-import authRouter from './routes/index.route';
-
-export { authRouter };
-
+export { default } from './authentication';

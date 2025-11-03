@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { alumnoRouter } from './alumnos';
-import { docenteRouter } from './docentes';
-import { apoderadoRouter } from './apoderados';
-import { authRouter } from './auth';
+import  alumnoRouter from './alumnos';
+import docenteRouter from './docentes';
+import apoderadoRouter from './apoderados';
+import authRouter from './auth';
 
 const router = Router();
 

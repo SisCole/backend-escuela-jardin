@@ -1,9 +1,7 @@
 import { Request } from 'express';
-import { InferAttributes } from 'sequelize';
-import { Docente } from '../models/docente.entity';
 
 export interface DocenteRequest extends Request {
-    body: DocenteEntity
+    body: Omit<DocenteEntity, 'idDocente'>;
 
     params: {
         id: string;
@@ -11,6 +9,7 @@ export interface DocenteRequest extends Request {
 }
 
 export interface DocenteEntity {
+    idDocente?: number | null;
     nombre: string;
     apellido: string;
     dni: string;
@@ -19,8 +18,6 @@ export interface DocenteEntity {
     fechaIngreso?: Date;
     direccion?: string;
     telefono?: string;
-    idUsuario?: number | null;
+    idUser?: number | null;
 }
 
-export type DocenteAttributes = InferAttributes<Docente>;
-export type DocenteCreationAttributes = Omit<DocenteEntity, 'idDocente'>;

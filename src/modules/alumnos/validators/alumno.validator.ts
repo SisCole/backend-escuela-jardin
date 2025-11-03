@@ -12,6 +12,6 @@ export const alumnoValidationSchema = Joi.object<AlumnoEntity>({
     informacionMedica: Joi.string().optional(),
 });
 
-export const almunoParamsValidationSchema = Joi.object({
+export const alumnoParamsValidationSchema = Joi.object({
     id: Joi.number().positive().required(),
 }).options({ convert: true });

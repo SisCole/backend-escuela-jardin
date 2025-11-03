@@ -1,27 +1,23 @@
-import { Model, Column, Table, PrimaryKey, AutoIncrement, AllowNull, Unique, Length, IsEmail, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
-import type { ApoderadoAttributes, ApoderadoCreationAttributes } from '../types/apoderado.type';
-import { Usuario } from '../../auth/models/usuario.entity';
+import { Model, Column, Table, PrimaryKey, AutoIncrement, AllowNull, Unique, Length, IsEmail, DataType, ForeignKey, BelongsTo, BelongsToMany } from 'sequelize-typescript';
+import { ApoderadoEntity} from '../types/apoderado.type';
+import { User, AlumnoApoderado, Alumno } from '../../models';
 
 @Table({
-    tableName: 'apoderados',
-    timestamps: true,
-    underscored: true,
-    createdAt: 'created_at',
-    updatedAt: 'updated_at',
+    tableName: 'apoderados'
 })
-export class Apoderado extends Model<ApoderadoAttributes, ApoderadoCreationAttributes> {
+export class Apoderado extends Model<ApoderadoEntity> {
     @PrimaryKey
     @AutoIncrement
-    @Column({ field: 'id_apoderado' })
+    @Column({ field: 'idApoderado' })
     idApoderado!: number;
 
-    @ForeignKey(() => Usuario)
+    @ForeignKey(() => User)
     @AllowNull
-    @Column({ field: 'id_usuario', type: DataType.INTEGER, allowNull: true })
-    idUsuario?: number | null;
+    @Column({ field: 'idUser', type: DataType.INTEGER, allowNull: true })
+    idUser?: number | null;
 
-    @BelongsTo(() => Usuario)
-    usuario?: Usuario | null;
+    @BelongsTo(() => User)
+    user?: User;
 
     @Length({
         min: 5,
@@ -65,4 +61,6 @@ export class Apoderado extends Model<ApoderadoAttributes, ApoderadoCreationAttri
     @Column({ field: 'telefono', allowNull: true, type: DataType.CHAR(9) })
     telefono?: string;
 
+    @BelongsToMany(() => Alumno, () => AlumnoApoderado)
+    alumnos?: Alumno[];
 }

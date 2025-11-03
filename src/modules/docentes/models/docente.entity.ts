@@ -1,29 +1,23 @@
-import { Table, Column, Model, PrimaryKey, AutoIncrement, AllowNull, Unique, Length, IsEmail, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
-import { DATE } from 'sequelize';
-import type { DocenteAttributes, DocenteCreationAttributes } from '../types/docente.type';
-import { Usuario } from '../../auth/models/usuario.entity';
+import { Table, Column, Model, PrimaryKey, AutoIncrement, AllowNull, Unique, Length, IsEmail, DataType, ForeignKey, BelongsToMany, BelongsTo } from 'sequelize-typescript';
+import { DocenteEntity } from '../types/docente.type';
+import { User } from '../../models';
 
 @Table({
     tableName: 'docentes',
-    timestamps: true,
-    underscored: true,
-    createdAt: 'created_at',
-    updatedAt: 'updated_at',
 })
-export class Docente extends Model<DocenteAttributes, DocenteCreationAttributes> {
-
+export class Docente extends Model<DocenteEntity> {
     @PrimaryKey
     @AutoIncrement
-    @Column({ field: 'id_docente' })
+    @Column({ field: 'idDocente' })
     idDocente!: number;
 
-    @ForeignKey(() => Usuario)
+    @ForeignKey(() => User)
     @AllowNull
-    @Column({ field: 'id_usuario', type: DataType.INTEGER, allowNull: true })
-    idUsuario?: number | null;
+    @Column({ field: 'isUser', type: DataType.INTEGER, allowNull: true })
+    idUser?: number | null;
 
-    @BelongsTo(() => Usuario)
-    usuario?: Usuario | null;
+    @BelongsTo(() => User)
+    user?: User;
 
     @Column({
         field: 'nombre',
@@ -38,7 +32,6 @@ export class Docente extends Model<DocenteAttributes, DocenteCreationAttributes>
         type: DataType.STRING(50),
     })
     apellido!: string;
-
 
     @Length({
         min: 8,
@@ -87,7 +80,7 @@ export class Docente extends Model<DocenteAttributes, DocenteCreationAttributes>
     @AllowNull
     @Column({
         field: 'fecha_nacimiento',
-        type: DATE,
+        type: DataType.DATE,
         allowNull: true,
     })
     fechaNacimiento?: Date;
@@ -95,21 +88,8 @@ export class Docente extends Model<DocenteAttributes, DocenteCreationAttributes>
     @AllowNull
     @Column({
         field: 'fecha_ingreso',
-        type: DATE,
+        type: DataType.DATE,
         allowNull: true,
     })
     fechaIngreso?: Date;
-    /*
-    @BeforeCreate
-    static async validateUniqueDni(instance: Docente) {
-        const exists = await Dni.findOne({ where: { dni: instance.dni } });
-        if (exists) {
-            throw new Error(`El DNI ${instance.dni} ya está registrado`);
-        }
-    }
-
-    @AfterCreate
-    static async createDniInTable(instance: Docente) {
-        await Dni.create({ dni: instance.dni });
-    } */
 }

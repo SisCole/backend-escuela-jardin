@@ -1,18 +1,15 @@
-import { DATE } from 'sequelize';
-import { Model, Column, Table, PrimaryKey, AutoIncrement, AllowNull, Unique, Length, DataType } from 'sequelize-typescript';
-import type { AlumnoAttributes, AlumnoCreationAttributes } from '../types/alumno.type';
+import { Model, Column, Table, PrimaryKey, AutoIncrement, AllowNull, Unique, Length, DataType, BelongsToMany } from 'sequelize-typescript';
+import { Apoderado, AlumnoApoderado } from '../../models';
+import { AlumnoEntity } from '../types/alumno.type';
 
 @Table({
     tableName: 'alumnos',
-    timestamps: true,
-    underscored: true,
-    createdAt: 'created_at',
-    updatedAt: 'updated_at',
 })
-export class Alumno extends Model<AlumnoAttributes, AlumnoCreationAttributes> {
+
+export class Alumno extends Model<AlumnoEntity> {
     @PrimaryKey
     @AutoIncrement
-    @Column({ field: 'id_alumno' })
+    @Column({ field: 'idAlumno' })
     idAlumno!: number;
 
     @Length({
@@ -37,7 +34,7 @@ export class Alumno extends Model<AlumnoAttributes, AlumnoCreationAttributes> {
     @Column({ field: 'dni', allowNull: true, unique: true, type: DataType.CHAR(8) })
     dni!: string;
 
-    @Column({ field: 'fecha_nacimiento', type: DATE, allowNull: false })
+    @Column({ field: 'fecha_nacimiento', type: DataType.DATE, allowNull: false })
     fechaNacimiento!: Date;
 
     @AllowNull
@@ -64,5 +61,7 @@ export class Alumno extends Model<AlumnoAttributes, AlumnoCreationAttributes> {
     @Column({ field: 'informacion_medica', allowNull: true, type: DataType.TEXT })
     informacionMedica?: string | null;
 
-    // Hooks related to a separate dnis table were removed to align with the current schema
+    @BelongsToMany(() => Apoderado, () => AlumnoApoderado)
+    apoderados?: Apoderado[];
+
 }

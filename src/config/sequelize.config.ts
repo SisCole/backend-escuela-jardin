@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
 import { DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME } from '../config/database.config';
-import { modelsList } from '../common/models';
+import * as models from '../modules/models';
 
 const sequelize = new Sequelize({
     host: DB_HOST,
@@ -10,7 +10,7 @@ const sequelize = new Sequelize({
     database: DB_NAME,
     dialect: 'mysql',
     logging: false,
-    models: modelsList,
+    models: Object.values(models),
 });
 
 export default sequelize;
