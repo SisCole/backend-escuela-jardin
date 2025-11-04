@@ -8,7 +8,7 @@ export async function login(req: AuthRequest, res: Response) {
     res.cookie('token', auth.token, { 
         httpOnly: true, 
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        sameSite: 'strict',       
         maxAge: 60 * 60 * 24 , // 24 horas
     });
     res.status(200).json({ message: "Login exitoso" });

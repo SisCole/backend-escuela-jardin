@@ -3,7 +3,7 @@ import { verifyToken } from '../lib/jsonwebtoken';
 import createHttpError from 'http-errors';
 
 export function verifyTokenMiddleware(req: Request, res: Response, next: NextFunction) {
-    if (req.url.includes('/login')) {
+    if (req.url.includes('/login') || req.url.includes('/logout')) {
         next();
     }
     const token = req.cookies.token;
